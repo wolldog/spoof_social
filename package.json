@@ -1,0 +1,28 @@
+{
+  "name": "spoof_social",
+  "version": "1.0.0",
+  "description": "API for social network",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
+    "seed": "node utils/seed"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.9.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wolldog/spoof_social.git"
+  },
+  "author": "Lydia Wallis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wolldog/spoof_social/issues"
+  },
+  "homepage": "https://github.com/wolldog/spoof_social#readme"
+}
