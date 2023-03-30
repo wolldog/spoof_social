@@ -38,7 +38,7 @@ const userSchema = new Schema(
     ],
   },
   {
-    // Here we are indicating that we want virtuals to be included with our response, overriding the default behavior
+    // Include virtuals with our response, overriding the default behavior
     toJSON: {
       virtuals: true,
     },
@@ -46,7 +46,7 @@ const userSchema = new Schema(
   }
 );
 
-// Create a virtual property `fullName` that gets and sets the user's full name
+// Create a virtual property `friendCount` that gets the length of the friends array
 userSchema
   .virtual("friendCount")
   // Getter
