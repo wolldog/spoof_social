@@ -12,14 +12,7 @@ const {
 router.route('/').get(getUsers).post(addUser)
 
 //GET user by ID, Update a user by ID & DELETE a user by ID
-router.route('/:id').get(getUser).put(updateUser).delete(deleteUser)
-
-
-//PUT to update a user by _id
-
-
-//DELETE a user by _id
-
+router.route('/:userId').get(getUser).put(updateUser).delete(deleteUser)
 
 
 module.exports = router;
