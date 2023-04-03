@@ -13,7 +13,8 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      //get: v => format date
+      get: (createdAt) => {return createdAt.toLocaleDateString()}
+      
     },
 
     username: {
@@ -24,9 +25,10 @@ const thoughtSchema = new Schema(
     reactions: [reactionSchema],
   },
   {
-    // Include virtuals with our response, overriding the default behavior
+    // Include virtuals with the response, overriding the default behavior
     toJSON: {
       virtuals: true,
+      getters: true,
     },
     id: false,
   }
@@ -38,6 +40,7 @@ thoughtSchema
   .get(function () {
     return this.reactions.length;
   });
+
 
 // Initialize our User model
 const Thought = model("thought", thoughtSchema);
