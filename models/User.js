@@ -5,22 +5,22 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
-      required: true,
+      required: [ true, "A username is required" ],
       trim: true,
-      //TODO: validate uniqueness
+      unique: true
     },
 
     email: {
       type: String,
       required: true,
-      //TODO: validate uniqueness
       validate: {
         validator: function (v) {
           return /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(v);
         },
-        message: (props) => `${props.value} is not a valid email address!`,
+        message: (userEmail) => `${userEmail.value} is not a valid email address!`,
       },
       required: [true, "User email address is required"],
+      unique: true
     },
 
     thoughts: [
