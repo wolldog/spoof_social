@@ -79,18 +79,20 @@ Spoof Social provides routes for selecting all thoughts, an individual thought b
 - Select all thoughts `GET http://localhost:{PORT}/api/thoughts`
 - Select a thought by ID `GET http://localhost:{PORT}/api/thoughts/{id}`
 
-**Example data**
+**Example response**
 
 ```json
+
 {
-  "_id": "642b9c47636f9b3fdf60bb1a",
-  "thoughtText": "It takes a great deal of bravery to stand up to our enemies, but just as much to stand up to our friends.",
-  "username": "harrypotter",
-  "createdAt": "04/04/2023",
+  "_id": "642c1bea03880ad6d7a623a1",
+  "thoughtText": "Your mind is like this water, my friend. When it is agitated, it becomes difficult to see. But if you allow it to settle, the answer becomes clear.",
+  "username": "jackblack",
+  "createdAt": "04/04/2023, 10:45:30 pm",
   "reactions": [],
   "__v": 0,
   "reactionCount": 0
 }
+
 
 ```
 
