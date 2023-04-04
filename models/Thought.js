@@ -3,6 +3,7 @@ const { Schema, model } = require("mongoose");
 //Require the 'Reaction' schema in the 'Thought' model
 const reactionSchema = require("./Reaction");
 
+// Schema to create Thought model
 const thoughtSchema = new Schema(
   {
     thoughtText: {
