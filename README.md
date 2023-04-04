@@ -12,10 +12,9 @@ Spoof Social provides an API for a social network web application where users ca
 - [Installation](#installation)
 - [Usage](#usage)
   - [Users](#users)
-  - [Select](#select)
-  - [Create](#create)
-  - [Update](#update)
-  - [Delete](#delete)
+  - [Friends](#friends)
+  - [Thoughts](#thoughts)
+  - [Reactions](#reactions)
 - [Tests](#tests)
 - [Questions](#questions)
 
@@ -31,24 +30,99 @@ Run `npm start` to start the server. The server will start on PORT 3001 unless a
 
 Spoof Social provides routes to retreive all users or an individual user by their id, create a new user, update an existing user and delete a user by id.
 
-`GET http://localhost:{PORT}/api/users/{id}`
+- Select all users `GET http://localhost:{PORT}/api/users/`
+- Select user by ID `GET http://localhost:{PORT}/api/users/{id}`
 
-Example responses:
-
-**User**
+**Example responses**
 
 ```json
 [
-	{
-		"_id": "642bcd4a991ddc55900c8056",
-		"username": "goldylocks",
-		"email": "goldy@3bears.com",
-		"thoughts": [],
-		"friends": [],
-		"__v": 0,
-		"friendCount": 0
-	}
+ {
+  "_id": "642bcd4a991ddc55900c8056",
+  "username": "goldylocks",
+  "email": "goldy@3bears.com",
+  "thoughts": [],
+  "friends": [],
+  "__v": 0,
+  "friendCount": 0
+  }
 ]
 ```
+- Create a new user - `POST http://localhost:{PORT}/api/users/`
+
+**Example data**
+
+```json
+{
+  "username":"goldylocks",
+  "email":"goldy@3bears.com"
+}
+
+```
+- Delete a user by ID - `DELETE http://localhost:{PORT}/api/users/{id}`
+
+	N.B. When user are deleted, their associated thoughts will also be deleted.
+	
+- Update a user by ID - `PUT http://localhost:{PORT}/api/users/{id}`
+
+### <a name="friends"></a>Friends
+
+Spoof Social provides routes for adding and deleting friends
+
+- Add a friend to a user `POST http://localhost:{PORT}/api/users/{UserId}/friends/{friendsId}`
+
+- Delete a friend from a user `DELETE http://localhost:{PORT}/api/users/{UserId}/friends/{friendsId}`
+
+### <a name="thoughts"></a>Thoughts 
+
+Spoof Social provides routes for selecting all thoughts, an individual thought by ID, adding a new thought, updating an existing thought by ID and deleting a thought by ID.
+
+- Select all thoughts `GET http://localhost:{PORT}/api/thoughts`
+- Select a thought by ID `GET http://localhost:{PORT}/api/thoughts/{id}`
+
+**Example data**
+```json
 
 
+
+```
+
+- Create a new thought- `POST http://localhost:{PORT}/api/thoughts`
+
+	N.B. The new thought ID will be added to the array of users thoughts
+
+**Example data**
+```json
+
+{
+  "thoughtText" : "This is a thought",
+  "username" : "goldylocks",
+  "userId" : "642bcd4a991ddc55900c8056"
+}
+
+```
+- Update an existing thought -`PUT http://localhost:{PORT}/api/thoughts/{id}`
+
+- Delete an existing thought -`DELETE http://localhost:{PORT}/api/thoughts/{id}`
+	
+	N.B When a thought is deleted, it will be removed from the users array of thoughts
+	
+
+### <a name="reactions"></a>Reactions
+
+Spoof Social provides routes for creating and deleting reactions to thoughts. 
+
+- Creating a new reaction - `POST http://localhost:{PORT}/api/thoughts/{thoughtId}/reactions`
+
+- Deleteing an existing reaction - `DELETE http://localhost:{PORT}/api/thoughts/{thoughtId}/reactions/{reactionId}`
+
+
+### <a name="testing"></a>Testing
+
+N/A
+
+### <a name="questions"></a>Questions
+
+  If you have questions regarding the Spoof Social application,
+  you can contact me directly by email at lydiawallis@live.co.uk or reach out
+  to me on GitHub at https://www.github.com/wolldog.
