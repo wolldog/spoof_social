@@ -13,8 +13,9 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (createdAt) => {return createdAt.toLocaleDateString()}
-      
+      get: (createdAt) => {
+        return createdAt.toLocaleDateString();
+      },
     },
 
     username: {
@@ -40,7 +41,6 @@ thoughtSchema
   .get(function () {
     return this.reactions.length;
   });
-
 
 // Initialize our User model
 const Thought = model("thought", thoughtSchema);
