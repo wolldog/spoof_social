@@ -4,12 +4,20 @@ const { User, Thought } = require("../models");
 module.exports = {
   getUsers(req, res) {
     User.find()
+      //Populate 'friends' path with document from user colletion
+      .populate({ path: "friends", select: "-__v" })
+      //Populate 'thoughts' path with document from thought colletion
+      .populate({ path: "thoughts", select: "-__v" })
       .then((users) => res.json(users))
       .catch((err) => res.status(500).json(err));
   },
   //GET a single user by _id
   getUser(req, res) {
     User.findOne({ _id: req.params.userId })
+      //Populate 'friends' path with document from user colletion
+      .populate({ path: "friends", select: "-__v" })
+      //Populate 'thoughts' path with document from thought colletion
+      .populate({ path: "thoughts", select: "-__v" })
       .then((users) => res.json(users))
       .catch((err) => res.status(500).json(err));
   },
@@ -40,10 +48,13 @@ module.exports = {
   deleteUser(req, res) {
     User.findByIdAndDelete({ _id: req.params.userId })
       .then((user) =>
+        //DELETE users thoughts when user is deleted
+        Thought.deleteMany({ username: user.username })
+      )
+      .then((user) =>
         !user
           ? res.status(404).json({ message: "No user with this id!" })
-          : //TODO: include delete of users associated thoughts
-            res.json({ message: "One user deleted" })
+          : res.json({ message: "One user deleted" })
       )
       .catch((err) => res.status(500).json(err));
   },
@@ -82,4 +93,3 @@ module.exports = {
   },
 };
 
-//BONUS: Remove a user's associated thoughts when deleted
