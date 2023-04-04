@@ -17,7 +17,7 @@ const thoughtSchema = new Schema(
       type: Date,
       default: Date.now, //Set default createdAt date to today
       get: (createdAt) => {
-        return createdAt.toLocaleDateString(); //Format data using a get method
+        return createdAt.toLocaleString(); //Format data using a get method
       },
     },
 
