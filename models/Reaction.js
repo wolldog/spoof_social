@@ -1,5 +1,7 @@
+// Define Mongoose
 const { Schema, Types } = require("mongoose");
 
+// Create a new instance of the Mongoose schema to define 'Reaction' document
 const reactionSchema = new Schema(
   {
     reactionId: {
@@ -20,7 +22,9 @@ const reactionSchema = new Schema(
 
     createdAt: {
       type: Date,
+      //Set default createdAt date to today
       default: Date.now,
+      //Format data using a get method
       get: (createdAt) => {
         return createdAt.toLocaleDateString();
       },
