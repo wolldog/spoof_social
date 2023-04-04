@@ -20,11 +20,11 @@ Spoof Social provides an API for a social network web application where users ca
 
 ## <a name="installation"></a> Installation
 
-The application requires Node.js, MongoDB. Clone the project folder from GitHub and run `npm install` to install the dependancies.
+The application requires Node.js and MongoDB to be installed. Clone the project folder from GitHub and run `npm install` to install the dependancies; express.js and mongoose v6.9.2.
 
 ## <a name="usage"></a> Usage
 
-Run `npm start` to start the server. The server will start on PORT 3001 unless an alternative is supplied in .env.
+Run `npm start` to start the server. The server will start on PORT 3001 unless an alternative is supplied. Insomnia or other API development platform can be used to demonstrate the functionality.
 
 ### <a name="users"></a>Users
 
@@ -135,7 +135,7 @@ Spoof Social provides routes for creating and deleting reactions to thoughts.
 - Deleting an existing reaction - `DELETE http://localhost:{PORT}/api/thoughts/{thoughtId}/reactions/{reactionId}`
 
 
-### <a name="testing"></a>Testing
+### <a name="tests"></a>Tests
 
 N/A
 
