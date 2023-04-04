@@ -36,17 +36,16 @@ Spoof Social provides routes to retreive all users or an individual user by thei
 **Example responses**
 
 ```json
-[
+
  {
-  "_id": "642bcd4a991ddc55900c8056",
-  "username": "goldylocks",
-  "email": "goldy@3bears.com",
   "thoughts": [],
   "friends": [],
-  "__v": 0,
+  "_id": "642c1b770c8f869bbdcf7120",
+  "username": "jackblack",
+  "email": "jack@black.com",
   "friendCount": 0
-  }
-]
+ },
+
 ```
 - Create a new user - `POST http://localhost:{PORT}/api/users/`
 
@@ -61,7 +60,7 @@ Spoof Social provides routes to retreive all users or an individual user by thei
 ```
 - Delete a user by ID - `DELETE http://localhost:{PORT}/api/users/{id}`
 
-	N.B. When user are deleted, their associated thoughts will also be deleted.
+	N.B. When users are deleted, their associated thoughts will also be deleted.
 	
 - Update a user by ID - `PUT http://localhost:{PORT}/api/users/{id}`
 
@@ -81,15 +80,23 @@ Spoof Social provides routes for selecting all thoughts, an individual thought b
 - Select a thought by ID `GET http://localhost:{PORT}/api/thoughts/{id}`
 
 **Example data**
+
 ```json
-
-
+{
+  "_id": "642b9c47636f9b3fdf60bb1a",
+  "thoughtText": "It takes a great deal of bravery to stand up to our enemies, but just as much to stand up to our friends.",
+  "username": "harrypotter",
+  "createdAt": "04/04/2023",
+  "reactions": [],
+  "__v": 0,
+  "reactionCount": 0
+}
 
 ```
 
 - Create a new thought- `POST http://localhost:{PORT}/api/thoughts`
 
-	N.B. The new thought ID will be added to the array of users thoughts
+	N.B. The new thought ID will be added to the array of user's thoughts
 
 **Example data**
 ```json
@@ -105,7 +112,7 @@ Spoof Social provides routes for selecting all thoughts, an individual thought b
 
 - Delete an existing thought -`DELETE http://localhost:{PORT}/api/thoughts/{id}`
 	
-	N.B When a thought is deleted, it will be removed from the users array of thoughts
+	N.B When a thought is deleted, it will be removed from the user's array of thoughts
 	
 
 ### <a name="reactions"></a>Reactions
@@ -114,7 +121,16 @@ Spoof Social provides routes for creating and deleting reactions to thoughts.
 
 - Creating a new reaction - `POST http://localhost:{PORT}/api/thoughts/{thoughtId}/reactions`
 
-- Deleteing an existing reaction - `DELETE http://localhost:{PORT}/api/thoughts/{thoughtId}/reactions/{reactionId}`
+**Example Data**
+
+```json
+{
+ "reactionBody": "Thats amazing!",
+ "username": "harrypotter"
+}
+```
+
+- Deleting an existing reaction - `DELETE http://localhost:{PORT}/api/thoughts/{thoughtId}/reactions/{reactionId}`
 
 
 ### <a name="testing"></a>Testing
