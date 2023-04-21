@@ -18,7 +18,7 @@ Spoof Social provides an API for a social network web application where users ca
 - [Tests](#tests)
 - [Questions](#questions)
 
-## <a name="installation"></a> Installation
+
 
 The application requires Node.js and MongoDB to be installed. Clone the project folder from GitHub and run `npm install` to install the dependancies; express.js and mongoose v6.9.2.
 
